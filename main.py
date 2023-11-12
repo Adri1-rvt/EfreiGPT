@@ -1,6 +1,5 @@
 """ Programme python principal
 Auteurs : Gabriel PRIEUR, Adrien RIVET
-Version : 2
 """
 
 """----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
