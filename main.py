@@ -1,10 +1,10 @@
 """ Programme python principal
 Auteurs : Gabriel PRIEUR, Adrien RIVET
-Version : 1
+Version : 2
 """
 
 """----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
-
+import tfidf_matrice_calculation
 
 """----------DECLARATION DES FONCTIONS UTILISATEUR----------"""
 
@@ -45,6 +45,10 @@ while number <= 0 or number > 6:
 if number == 1:
     print(f"Vous avez choisi : {fonctionality1}\n"+
           "Réponse :")
+
+    # Obtenir la matrice TF-IDF
+    tfidf_matrix = tfidf_matrice_calculation.tfidf_matrix("cleaned")
+
 elif number == 2:
     print(f"Vous avez choisi : {fonctionality2}\n"+
           "Réponse :")
