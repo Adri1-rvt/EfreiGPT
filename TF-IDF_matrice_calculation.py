@@ -1,6 +1,6 @@
 """ Programme python la créaction de la matrice TF-IDF
 Auteurs : Gabriel PRIEUR, Adrien RIVET
-Version : 1
+Version : 2
 """
 
 """----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
