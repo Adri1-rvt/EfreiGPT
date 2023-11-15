@@ -18,8 +18,6 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](images\\screenshot.png)
-
 ## Description
 
 EfreiGPT est une incroyable application python conçue pour...
