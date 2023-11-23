@@ -20,8 +20,7 @@
 
 ## Description
 
-EfreiGPT est une incroyable application python conçue pour répondre à des questions à partir d'un corpus de 8 textes, qui contiennent les discours d'investiture des 6 derniers présidents de la république francaise.
-<br>L'entièreté de notre programme est codé à la main est optimisé au maximum sans utiliser de fonctions prédéfinies.
+EfreiGPT est une incroyable application python conçue pour...
 <br>Les incroyables fonctionnalités d'EfreiGPT :
 - Afficher la liste des mots les moins importants dans le corpus de documents. Un mot est dit non important,
 si son TD-IDF = 0 dans tous les fichiers. 
@@ -33,24 +32,20 @@ fois
 - Hormis les mots dits « non importants », quel(s) est(sont) le(s) mot(s) que tous les présidents ont évoqués.
 
 Liste des composants du projet :
-- Des scipts python :
-  - Le fichier python principal : main.py -> à exécuter pour lancer le programme
-  - Le fichier python de prétraitement des textes
-  - Le fichier python de calcul de la matrice TF-IDF
+- Le fichier python principal : main.py -> à exécuter pour lancer le programme
+- Le fichier python de prétraitement des textes
+- Le fichier python de calcul de la matrice TF-IDF
 - Un fichier texte README -> le fichier sur lequel vous vous trouvez actuellement !
-- Un fichier LICENSE.txt
-- Un dossier contenant des images
-- Deux dossiers contenants des fichiers textes
 
 
 ## Utilisation
 
 Pour utiliser EfreiGPT, rien de plus simple ! Il vous suffit de suivre quelques étapes :
-- Assurez-vous tout d'abord que Python est installé sur votre machine : Avant de pouvoir exécuter notre magnifique code Python, vous devez vous assurer que le langage de programmation Python est bien installé sur votre système. Pour vérifier cela, ouvrez votre terminal préféré (l'invite de commande Windows par défaut fait l'affaire) et tapez "python --version". Si Python n'est pas déjà installé, téléchargez-le depuis le site officiel (https://www.python.org/) et suivez les instructions d'installation.
-- Téléchargez ou clonez le code source : Assurez-vous d'avoir une copie de la dernière version du code source de notre projet sur votre ordinateur. Vous pouvez le télécharger depuis GitHub : <a href="#télécharger">Télécharger</a>.
-- Exécutez le code : Après avoir téléchargé le dossier avec les éléments de notre projet, vous pouvez exécuter le code source du projet. Vous devrez pour cela chercher le fichier principal du projet, "main.py". Pour l'exécuter, vous avez plusieurs possibilités :
-    - Utiliser un IDE : ouvrez le répertoire du projet dans un IDE (comme PyCharm par exemple), puis cliquez sur le fichier "main.py" et exécutez-le. Le code sera exécuté directement dans la console de votre IDE préféré.
-    - Utiliser un terminal : depuis un terminal, naviguez jusqu'au répertoire du projet à l'aide de la commande "cd", puis tapez "python main.py". Le code sera exécuté directement dans votre terminal.
+- Assurez-vous que Python est installé sur votre machine : Avant de pouvoir exécuter notre code Python, vous devez vous assurer que le langage de programmation Python est bien installé sur votre système. Pour vérifier cela, ouvrez votre terminal préféré (l'invite de commande Windows par défaut fait l'affaire) et tapez "python --version". Si Python n'est pas déjà installé, téléchargez-le depuis le site officiel (https://www.python.org/) et suivez les instructions d'installation.
+- Téléchargez ou clonez le code source : Assurez-vous d'avoir une copie du code source de notre projet sur votre ordinateur. Vous pouvez le télécharger depuis GitHub, voir : <a href="#télécharger">Télécharger</a>.
+- Exécutez le code : Après avoir téléchargé le dossier avec les éléments de notre projet, vous pouvez exécuter le code source du projet. Vous devrez chercher le fichier principal du projet, "main.py". Pour l'exécuter, vous avez plusieurs possibilités :
+    - Utiliser un IDE : ouvrir le répertoire du projet dans un IDE (comme PyCharm par exemple), cliquer sur le fichier "main.py" et l'exécuter. Le code sera exécuté directement dans la console de votre IDE préféré.
+    - Utiliser un terminal : depuis un terminal, naviguer jusqu'au répertoire du projet à l'aide de la commande "cd", puis tapez "python main.py". Le code sera exécuté directement dans votre terminal.
 
 Commandes utilisées :
 
@@ -78,7 +73,7 @@ Sélectionnez ensuite "Download ZIP". <br>Une fois votre fichier zip télécharg
 
 ## Crédits
 
-Ce projet a été réalisé par 2 programmeurs de grand talent :
+Ce projet a été réalisé par 2 étudiants de grand talent :
 - Gabriel PRIEUR
 - Adrien RIVET
 
@@ -95,16 +90,6 @@ Nous échangerons avec vous avec grand plaisir !
 EfreiGPT - Tous droits réservés<br>
 <a href="LICENSE.txt">License</a> 
 
-```bash
-    ___________ _____               .__    _____________________________
-    \_   _____// ____\______   ____ |__|  /  _____/\______   \__    ___/
-     |    __)_\   __\ _  __ \_/ __ \|  | /   \  ___ |     ___/ |    |
-     |        \|  |   |  | \/\  ___/|  | \    \_\  \|    |     |    |
-    /_______  /|__|   |__|    \___  |__|  \______  /|____|     |____|
-            \/                    \/             \/
-```
+
 
 ---
-
-Fonctionnalité cachée : Notre chatBot a de l'humour ! Demandez-lui de vous faire une blague et il se fera un plaisir d'égayer votre journée !
-<br>Pour cela, posez-lui une question avec le mot "blague" dedans.
