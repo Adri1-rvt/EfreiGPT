@@ -61,5 +61,3 @@ file_name_list = os.listdir("speeches")
 # Prétraiter les textes
 for file in file_name_list:
     text_formating(file)
-
-"""----------FIN DU PROGRAMME----------"""
