@@ -13,7 +13,6 @@
   <a href="#utilisation">Utilisation</a> •
   <a href="#télécharger">Télécharger</a> •
   <a href="#crédits">Crédits</a> •
-  <a href="#related">Related</a> •
   <a href="#license">License</a>
 </p>
 
