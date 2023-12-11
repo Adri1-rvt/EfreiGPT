@@ -53,6 +53,31 @@ def text_formating(file_name):
                     fcleaned.write(character)   # Réécrire le caractère s'il s'agit d'un caractère avec accent
                     last_character = character
 
+def question_token(question):
+    letter_list_cleaned = []
+    letter_list = list(question)
+    for character in letter_list:
+        if 97 <= ord(character) <= 122:
+            letter_list_cleaned.append(character)
+            last_character = character
+        elif 65 <= ord(character) <= 90:
+            letter_list_cleaned.append(chr(ord(character) + 32))
+            last_character = chr(ord(character) + 32)
+        elif 0 <= ord(character) <= 64 or 91 <= ord(character) <= 96 or 123 <= ord(character) <= 127:
+            if last_character != " ":
+                letter_list_cleaned.append(" ")
+                last_character = " "
+        else:
+            letter_list_cleaned.append(character)
+            last_character = character
+
+    while letter_list_cleaned and letter_list_cleaned[-1] == " ":
+        del letter_list_cleaned[-1]
+
+    question = "".join(letter_list_cleaned)
+    word_list = question.split(" ")
+    return word_list
+
 
 """----------CORPS DU PROGRAMME PRINCIPAL----------"""
 

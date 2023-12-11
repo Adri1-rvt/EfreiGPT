@@ -74,3 +74,4 @@ def tfidf_matrix(corpus_dir):
 
 # Obtenir la matrice TF-IDF
 tfidf_matrix_result = tfidf_matrix("cleaned")
+

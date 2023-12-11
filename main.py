@@ -7,10 +7,9 @@ Version : 1.1
 import os
 import time
 from text_treatment import text_formating
-from text_treatment import extract_president_name
-from tfidf_matrice_calculation import tf_calculation
 from tfidf_matrice_calculation import tfidf_matrix
 from fonctionnalites import fonctionnalite1, fonctionnalite2, fonctionnalite3, fonctionnalite4, fonctionnalite5, fonctionnalite6
+from text_treatment import question_token
 
 """----------CORPS DU PROGRAMME PRINCIPAL----------"""
 
@@ -52,6 +51,28 @@ if __name__ == '__main__':
         number = int(input("Numéro invalide. Tapez le numéro choisi : "))
 
 
+    if number == 1:
+        question = str(input("Posez votre question : "))
+
+        print(question_token(question))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if number == 2:
 
 
@@ -84,7 +105,7 @@ if __name__ == '__main__':
             # Obtenir la matrice TF-IDF
             tfidf_matrix_result = tfidf_matrix("cleaned")
 
-            # Fonctionnalité 1
+            # Fonctionnalités
             if number == 1:
                 fonctionnalite1(tfidf_matrix_result)
             elif number == 2:
