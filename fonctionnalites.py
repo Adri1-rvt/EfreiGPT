@@ -1,9 +1,15 @@
-# fonctionnalites.py
+""" Programme python des fonctionnalités
+Auteurs : Gabriel PRIEUR, Adrien RIVET
+Version : 1.2
+"""
 
+"""----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
 from tfidf_matrice_calculation import tf_calculation, tfidf_matrix
 from text_treatment import text_formating, extract_president_name
 import os
 import time
+
+"""----------DECLARATION DES FONCTIONS UTILISATEUR----------"""
 
 def fonctionnalite1(tfidf_matrix_result):
     # Fonction : afficher la liste des mots les moins importants dans le corpus de documents

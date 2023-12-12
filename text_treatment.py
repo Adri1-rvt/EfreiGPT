@@ -1,6 +1,6 @@
 """ Programme python de prétraitement des données
 Auteurs : Gabriel PRIEUR, Adrien RIVET
-Version : 1.1
+Version : 1.2
 """
 
 """----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""

@@ -1,15 +1,21 @@
 """ Programme python principal
 Auteurs : Gabriel PRIEUR, Adrien RIVET
-Version : 1.1
+Version : 1.2
 """
 
 """----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
 import os
 import time
 from text_treatment import text_formating
-from tfidf_matrice_calculation import tfidf_matrix
-from fonctionnalites import fonctionnalite1, fonctionnalite2, fonctionnalite3, fonctionnalite4, fonctionnalite5, fonctionnalite6
-from text_treatment import question_token
+from tfidf_matrice_calculation import tfidf_matrix, idf_calculation
+from fonctionnalites import (
+    fonctionnalite1, fonctionnalite2, fonctionnalite3, fonctionnalite4, fonctionnalite5, fonctionnalite6
+)
+from chat_functions import (
+    tokenize_question, intersection_terms, tfidf_vector,
+    cosine_similarity, most_relevant_document, generate_response, refine_response
+)
+
 
 """----------CORPS DU PROGRAMME PRINCIPAL----------"""
 
@@ -18,15 +24,21 @@ if __name__ == '__main__':
     for file in os.listdir("speeches"):
         text_formating(file)
 
+    # Obtenir la matrice TF-IDF
+    tfidf_matrix_result = tfidf_matrix("cleaned")
+
+    # Obtenez la liste des noms de fichiers
+    file_names = os.listdir("speeches")
+
     # ASCII art du logo du Chatbot
     print("""
- ______  __          _    _____ _____ _______ 
-|  ____|/ _|        (_)  / ____|  __ \__   __|
-| |__  | |_ _ __ ___ _  | |  __| |__) | | |   
-|  __| |  _| '__/ _ \ | | | |_ |  ___/  | |   
-| |____| | | | |  __/ | | |__| | |      | |   
-|______|_| |_|  \___|_|  \_____|_|      |_| v1.1     
-     """)
+     ______  __          _    _____ _____ _______ 
+    |  ____|/ _|        (_)  / ____|  __ \__   __|
+    | |__  | |_ _ __ ___ _  | |  __| |__) | | |   
+    |  __| |  _| '__/ _ \ | | | |_ |  ___/  | |   
+    | |____| | | | |  __/ | | |__| | |      | |   
+    |______|_| |_|  \___|_|  \_____|_|      |_| v1.2     
+        """)
     print("-----Bonjour et bienvenue sur EfreiGPT !-----")
     time.sleep(0.5)
 
@@ -50,26 +62,39 @@ if __name__ == '__main__':
     while number <= 0 or number > 2:
         number = int(input("Numéro invalide. Tapez le numéro choisi : "))
 
-
     if number == 1:
         question = str(input("Posez votre question : "))
 
-        print(question_token(question))
+        # Tokenisation de la question
+        question_words = tokenize_question(question)
+        print(question_words)
 
+        # Intersection avec le corpus
+        common_terms = intersection_terms(question_words, "cleaned")
+        print(common_terms)
 
+        # Calcul du vecteur TF-IDF de la question
+        idf_scores = idf_calculation("cleaned")
+        question_vector = tfidf_vector(question_words, idf_scores)
+        print(question_vector)
 
+        # Calcul du document le plus pertinent
+        most_relevant_doc = most_relevant_document(question_vector, tfidf_matrix_result, file_names)
+        print(most_relevant_doc)
 
+        # Récupération du mot avec le score TF-IDF le plus élevé dans la question
+        highest_tfidf_word = max(question_vector, key=question_vector.get)
+        print(highest_tfidf_word)
 
+        # Génération de la réponse
+        response = generate_response(most_relevant_doc, highest_tfidf_word)
+        print(response)
 
+        # Affinage de la réponse
+        question_starter = " ".join(question_words[:2])
+        refined_response = refine_response(response, question_starter)
 
-
-
-
-
-
-
-
-
+        print(refined_response)
 
 
 
