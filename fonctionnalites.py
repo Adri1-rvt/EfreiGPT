@@ -1,19 +1,23 @@
-""" Programme python des fonctionnalités
-Auteurs : Gabriel PRIEUR, Adrien RIVET
+""" Programme python des fonctionnalités pré-rédigées
+Programmeurs : Gabriel PRIEUR, Adrien RIVET
 Version : 1.2
 """
 
-"""----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
-from tfidf_matrice_calculation import tf_calculation, tfidf_matrix
-from text_treatment import text_formating, extract_president_name
+"""----------IMPORTATION DES MODULES ET FONCTIONS EXTERNES----------"""
+from tfidf_matrice_calculation import tf_calculation
+from text_treatment import extract_president_name
 import os
 import time
 
 """----------DECLARATION DES FONCTIONS UTILISATEUR----------"""
 
+# Fonction : afficher la liste des mots les moins importants dans le corpus de documents
+# Fonctionnement : faire une liste avec les mots ayant un score TF-IDF = 0, puis les afficher s'ils sont = 0 dans tous les documents et qu'ils apparaissent donc 8 fois dans la liste
+# Argument d'entrée : matrice TF-IDF
 def fonctionnalite1(tfidf_matrix_result):
-    # Fonction : afficher la liste des mots les moins importants dans le corpus de documents
-    # Fonctionnement : faire une liste avec les mots ayant un score TF-IDF = 0, puis les afficher s'ils sont = 0 dans tous les documents et qu'ils apparaissent donc 8 fois dans la liste
+    """
+    :param tfidf_matrix_result:
+    """
     print("Question choisie : Afficher la liste des mots les moins importants dans le corpus de documents")
     print("Réponse :", end=" ")
     L = []
@@ -32,9 +36,13 @@ def fonctionnalite1(tfidf_matrix_result):
             time.sleep(0.1)
     print()
 
+# Fonction : afficher le mot ayant le score TF-IDF le plus élevé
+# Fonctionnement : parcourir l'entièreté de la matrice TF-IDF et afficher le mot dont la valeur est la plus élevée
+# Argument d'entrée : matrice TF-IDF
 def fonctionnalite2(tfidf_matrix_result):
-    # Fonction : afficher le mot ayant le score TF-IDF le plus élevé
-    # Fonctionnement : parcourir l'entièreté de la matrice TF-IDF et afficher le mot dont la valeur est la plus grande
+    """
+    :param tfidf_matrix_result:
+    """
     print("Question choisie : Afficher le mot ayant le score TF-IDF le plus élevé")
     print("Réponse :", end=" ")
     max_tfidf = 0
@@ -53,14 +61,15 @@ def fonctionnalite2(tfidf_matrix_result):
             time.sleep(0.1)
     print()
 
+# Fonction : indiquer le mot le plus répété par le président Chirac
+# Fonctionnement : parcourir l'ensemble des discours de Chirac, créer un dictionnaire de chacun des mots prononcé et afficher le mot dont la valeur est la plus grande
 def fonctionnalite3():
-    # Fonction : indiquer le mot le plus répété par le président Chirac
-    # Fonctionnement : parcourir l'ensemble des discours de Chirac, créer un dictionnaire de chacun des mots prononcé et afficher le mot dont la valeur est la plus grande
     print("Question choisie : Indiquer le mot le plus répété par le président Chirac")
     print("Réponse :", end=" ")
     most_repeated_frequency = 0
     most_repeated_word = ""
     text_list = os.listdir("cleaned")
+    most_repeated_frequency_final = 0
     for text in text_list:
         if "Chirac" in text:
             with open(f"cleaned\\{text}", "r") as f:
@@ -76,7 +85,8 @@ def fonctionnalite3():
                     if frequency > most_repeated_frequency:
                         most_repeated_frequency = frequency
                         most_repeated_word = word
-    answer = f'Le mot le plus répété par le président Chrirac est le mot "{most_repeated_word}", qu\'il a prononcé exactement {most_repeated_frequency} fois.'
+                most_repeated_frequency_final += most_repeated_frequency
+    answer = f'Le mot le plus répété par le président Chirac est le mot "{most_repeated_word}", qu\'il a prononcé exactement {most_repeated_frequency_final} fois.'
     cpt = 1
     for letter in answer:
         print(letter, end="")
@@ -85,10 +95,13 @@ def fonctionnalite3():
             time.sleep(0.1)
     print()
 
-
+# Fonction : indiquer les noms des présidents qui ont parlé de la « Nation » et celui qui l’a répété le plus de fois
+# Fonctionnement : parcourir les dicours des présidents, détecter lorsque le mot "nation" a été prononcé, compter le nombre de fois où le mot a été prononcé par chaque président et afficher celui qui l'a le plus dit
+# Argument d'entrée : matrice TF-IDF
 def fonctionnalite4(tfidf_matrix_result):
-    # Fonction : indiquer ndiquer les noms des présidents qui ont parlé de la « Nation » et celui qui l’a répété le plus de fois
-    # Fonctionnement : parcourir les dicours des présidents, détecter lorsque le mot "nation" a été prononcé, compter le nombre de fois où le mot a été prononcé par chaque président et afficher celui qui l'a le plus dit
+    """
+    :param tfidf_matrix_result:
+    """
     print("Question choisie : Indiquer les noms des présidents qui ont parlé de la « Nation » et celui qui l’a répété le plus de fois")
     print("Réponse :", end=" ")
     nation_pronounced = {}
@@ -118,9 +131,9 @@ def fonctionnalite4(tfidf_matrix_result):
             time.sleep(0.1)
     print()
 
+# Fonction : indiquer le premier président à parler du climat et/ou de l’écologie
+# Fonctionnement : parcourir les discours des présidents, détecter quand les mot "écologie" ou "climat" apparaissent et afficher le premier président à en avoir parlé historiquement
 def fonctionnalite5():
-    # Fonction : indiquer le premier président à parler du climat et/ou de l’écologie
-    # Fonctionnement : parcourir les discours des présidents, détecter quand les mot "écologie" ou "climat" apparaissent et afficher le premier président à en avoir parlé historiquement
     print("Question choisie : Indiquer le premier président à parler du climat et/ou de l’écologie")
     print("Réponse :", end=" ")
     search_word = "climat"
@@ -154,15 +167,25 @@ def fonctionnalite5():
             time.sleep(0.1)
     print()
 
+# Fonction : hormis les mots dits « non importants », afficher les mots que tous les présidents ont évoqués
+# Fonctionnement : regarder les mots que tous les présidents ont prononcé et enlever les mots dont le score TF-IDF = 0 dans tous les documents
+# Argument d'entrée : matrice TF-IDF
 def fonctionnalite6(tfidf_matrix_result):
-    # Fonction : hormis les mots dits « non importants », afficher les mots que tous les présidents ont évoqués
-    # Fonctionnement : regarder les mots que tous les présidents ont prononcé et enlever les mots dont le score TF-IDF = 0 dans tous les documents
+    """
+    :param tfidf_matrix_result:
+    """
     print("Question choisie : Hormis les mots dits « non importants », afficher les mots que tous les présidents ont évoqués")
     print("Réponse :", end=" ")
     common_words = {}
     text_list = os.listdir("cleaned")
     # Fonction : rassembler les discours des présidents qui en ont prononcé plusieurs en un seul
     def concat_files(file1_path, file2_path, output_path, file):
+        """
+        :param file1_path:
+        :param file2_path:
+        :param output_path:
+        :param file:
+        """
         with open(file1_path, 'r') as f, open(file2_path, 'r') as f2:
             content1 = f.read()
             content2 = f2.read()

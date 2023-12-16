@@ -19,21 +19,26 @@
 ## Description
 
 EfreiGPT est une  application python conçue pour répondre à vos question sur des textes. Pour cela, il dispose d'un corpus de documents contenant les discours d'investiture des 6 derniers présidents de la République Française lors des 8 derniers mandats présidentiels.
-<br>Les incroyables fonctionnalités d'EfreiGPT :
-- Afficher la liste des mots les moins importants dans le corpus de documents
-- Afficher le mot ayant le score TD-IDF le plus élevé 
-- Indiquer le mot le plus répété par le président Chirac et le nombre de fois où il l'a prononcé
-- Indiquer les noms des présidents qui ont parlé de la « Nation » et celui qui l’a répété le plus de
-fois 
-- Indiquer le premier président à parler du climat et/ou de l’écologie 
-- Hormis les mots dits « non importants », quels sont les mots que tous les présidents ont évoqués.
+<br>EfreiGPT a 2 modes de fonctionnement :
+- Répondre à vos questions
+- Répondre à des questions pré-rédigées :
+  - Afficher la liste des mots les moins importants dans le corpus de documents
+  - Afficher le mot ayant le score TD-IDF le plus élevé 
+  - Indiquer le mot le plus répété par le président Chirac et le nombre de fois où il l'a prononcé
+  - Indiquer les noms des présidents qui ont parlé de la « Nation » et celui qui l’a répété le plus de
+  fois 
+  - Indiquer le premier président à parler du climat et/ou de l’écologie 
+  - Hormis les mots dits « non importants », quels sont les mots que tous les présidents ont évoqués.
 
 Liste des composants du projet :
 - Le fichier python principal : main.py -> à exécuter pour lancer le programme
 - Le fichier python de prétraitement des textes : text_treatment.py
 - Le fichier python de calcul de la matrice TF-IDF : tfidf_matrice_calculation.py
-- Un fichier README.md -> le fichier sur lequel vous vous trouvez actuellement !
-- Un fichier texte qui contient la license du projet -> LICENSE.txt 
+- Le fichier python des fonctionnalités pré-rédigées : fonctionnalites.py
+- Le fichier python des fonctions chatbot : chat_functions.py
+- Un fichier README.md : le fichier sur lequel vous vous trouvez actuellement !
+- Un fichier texte qui contient la license du projet : LICENSE.txt 
+- Des fichiers textes servant de base de données, ici des discours de présidents
 
 
 ## Utilisation
@@ -41,8 +46,8 @@ Liste des composants du projet :
 Pour utiliser EfreiGPT, rien de plus simple ! Il vous suffit de suivre quelques étapes faciles :
 - Assurez-vous que Python est installé sur votre machine : Avant de pouvoir exécuter notre code Python, vous devez vous assurer que le langage de programmation Python est bien installé sur votre système. Pour vérifier cela, ouvrez votre terminal préféré (l'invite de commande Windows par défaut fait l'affaire) et tapez "python --version". Si Python n'est pas déjà installé, téléchargez-le depuis le site officiel (https://www.python.org/) et suivez les instructions d'installation.
 - Téléchargez ou clonez le code source : Assurez-vous d'avoir une copie du code source de notre projet sur votre ordinateur. Vous pouvez le télécharger depuis GitHub, voir : <a href="#télécharger">Télécharger</a>.
-- Exécutez le code : Après avoir téléchargé le dossier avec les éléments de notre projet, vous pouvez exécuter le code source du projet. Vous devrez chercher le fichier principal du projet, "main.py". Pour l'exécuter, vous avez plusieurs possibilités :
-    - Utiliser un IDE (conseillé pour avoir le meilleur affichage) : ouvrir le répertoire du projet dans un IDE (comme PyCharm par exemple), cliquer sur le fichier "main.py" et l'exécuter. Le code sera exécuté directement dans la console de votre IDE préféré.
+- Exécutez le code : Après avoir téléchargé et décompressé le dossier avec les éléments de notre projet, vous pouvez exécuter le code source du projet. Vous devrez chercher le fichier principal du projet, "main.py". Pour l'exécuter, vous avez plusieurs possibilités :
+    - Utiliser un IDE (conseillé pour avoir le meilleur affichage dynamique) : ouvrir le répertoire du projet dans un IDE (comme PyCharm par exemple), cliquer sur le fichier "main.py" et l'exécuter. Le code sera exécuté directement dans la console de votre IDE préféré.
     - Utiliser un terminal : depuis un terminal, naviguer jusqu'au répertoire du projet à l'aide de la commande "cd", puis tapez "python main.py". Le code sera exécuté directement dans votre terminal.
 
 Commandes utilisées :

@@ -1,9 +1,9 @@
 """ Programme python de prétraitement des données
-Auteurs : Gabriel PRIEUR, Adrien RIVET
+Programmeurs : Gabriel PRIEUR, Adrien RIVET
 Version : 1.2
 """
 
-"""----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
+"""----------IMPORTATION DES MODULES ET FONCTIONS EXTERNES----------"""
 import os
 
 """----------DECLARATION DES FONCTIONS UTILISATEUR----------"""
@@ -13,6 +13,10 @@ import os
 # Argument d'entrée : nom de fichier
 # Sortie : nom complet du président
 def extract_president_name(file_name):
+    """
+    :param file_name:
+    :return: full_name
+    """
     file_name_without_extension = file_name[:-4]   # Supprimer l'extension ".txt"
     file_name_elements_list = file_name_without_extension.split("_")   # Séparer la chaîne à partir du "_"
     name = file_name_elements_list[-1]   # Conserver le nom du président
@@ -35,6 +39,9 @@ def extract_president_name(file_name):
 # Fonctionnement : mettre tous les caractères alphabétiques en minuscule, supprimer les caractères spéciaux, séparer chaque token d'un espace et s'assurer qu'il n'y ait pas 2 espaces de suite
 # Argument d'entrée : nom de fichier
 def text_formating(file_name):
+    """
+    :param file_name:
+    """
     with open(f"speeches\\{file_name}", "r") as f, open(f"cleaned\\cleaned_{file_name}", "w+") as fcleaned:
         last_character = ""   # Créer une variable qui s'assurera qu'il n'y ai pas 2 espaces de suite
         for line in f:
@@ -52,31 +59,6 @@ def text_formating(file_name):
                 else:
                     fcleaned.write(character)   # Réécrire le caractère s'il s'agit d'un caractère avec accent
                     last_character = character
-
-def question_token(question):
-    letter_list_cleaned = []
-    letter_list = list(question)
-    for character in letter_list:
-        if 97 <= ord(character) <= 122:
-            letter_list_cleaned.append(character)
-            last_character = character
-        elif 65 <= ord(character) <= 90:
-            letter_list_cleaned.append(chr(ord(character) + 32))
-            last_character = chr(ord(character) + 32)
-        elif 0 <= ord(character) <= 64 or 91 <= ord(character) <= 96 or 123 <= ord(character) <= 127:
-            if last_character != " ":
-                letter_list_cleaned.append(" ")
-                last_character = " "
-        else:
-            letter_list_cleaned.append(character)
-            last_character = character
-
-    while letter_list_cleaned and letter_list_cleaned[-1] == " ":
-        del letter_list_cleaned[-1]
-
-    question = "".join(letter_list_cleaned)
-    word_list = question.split(" ")
-    return word_list
 
 
 """----------CORPS DU PROGRAMME PRINCIPAL----------"""

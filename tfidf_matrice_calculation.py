@@ -1,12 +1,11 @@
 """ Programme python de la créaction de la matrice TF-IDF
-Auteurs : Gabriel PRIEUR, Adrien RIVET
+Programmeurs : Gabriel PRIEUR, Adrien RIVET
 Version : 1.2
 """
 
-"""----------IMPORTATTION DES MODULES ET FONCTIONS EXTERNES----------"""
+"""----------IMPORTATION DES MODULES ET FONCTIONS EXTERNES----------"""
 import math
 import os
-from text_treatment import extract_president_name
 
 """----------DECLARATION DES FONCTIONS UTILISATEUR----------"""
 
@@ -15,6 +14,10 @@ from text_treatment import extract_president_name
 # Argument d'entrée : fichier
 # Sortie : dictionnaire de la matrice TF du fichier
 def tf_calculation(f):
+    """
+    :param f:
+    :return: occurences
+    """
     file_content = f.read()
     words_list = file_content.split()   # Diviser le texte en mot à partir des espaces
     occurrences = {}
@@ -27,9 +30,13 @@ def tf_calculation(f):
 
 # Fonction : calculer les scores IDF
 # Fonctionnement : compter le nombre de documents du corpus contenant chaque mot, calculer le nombre total de documents, puis calculer l'IDF de chaque mot
-# Argument d'entrée : répertoire du fichier contenant les fichiers traités
+# Argument d'entrée : répertoire du dossier contenant les fichiers traités
 # Sortie : dictionnaire de la matrice IDF
 def idf_calculation(corpus_dir):
+    """
+    :param corpus_dir:
+    :return: idf
+    """
     word_count = {}
     number_of_files = len(os.listdir(corpus_dir))   # Compter le nombre de fichiers
     for file_name in os.listdir(corpus_dir):
@@ -48,14 +55,18 @@ def idf_calculation(corpus_dir):
     for i in range(len(words)):
         word = words[i]
         count = counts[i]
-        idf[word] = math.log(number_of_files / count)   # Calculer le score IDF et l'enregistrer dans un dictionnaire
+        idf[word] = math.log10(number_of_files / count)   # Calculer le score IDF et l'enregistrer dans un dictionnaire
     return idf
 
 # Fonction : calculer les scores TF-IDF
 # Fonctionnement : utiliser les fonctions de calcul de score TF et de score IDF, faire le calcul TF-IDF = TF*IDF pour chaque mot et enregistrer le score TF-IDF final dans un dictionnaire
-# Argument d'entrée : répertoire du fichier contenant les fichiers traités
+# Argument d'entrée : répertoire du dossier contenant les fichiers traités
 # Sortie : matrice TF-IDF, un tableau contenant des dictionnaires de scores TF-IDF pour chaque mot du corpus
 def tfidf_matrix(corpus_dir):
+    """
+    :param corpus_dir:
+    :return: tfidf_matrix
+    """
     tfidf_matrix = []
     idf_scores = idf_calculation(corpus_dir)   # Récupérer le score IDF
     for filename in os.listdir(corpus_dir):
@@ -69,9 +80,7 @@ def tfidf_matrix(corpus_dir):
             tfidf_matrix.append(tfidf_scores)   # Remplir le tableau avec le dictionnaire de scores TF-IDF du document
     return tfidf_matrix
 
-
 """----------CORPS DU PROGRAMME PRINCIPAL----------"""
 
 # Obtenir la matrice TF-IDF
 tfidf_matrix_result = tfidf_matrix("cleaned")
-
