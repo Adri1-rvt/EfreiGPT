@@ -243,7 +243,6 @@ def fonctionnalite6(tfidf_matrix_result):
     for word in common_words:
         if common_words[word] == 8 and word not in M:
             answer += f'"{word}", '
-
     cpt = 1
     for letter in answer:
         print(letter, end="")

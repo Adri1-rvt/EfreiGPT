@@ -169,6 +169,8 @@ def refine_response(question_starter, response):
         return f"Car, {response[1].lower()}{response[2:]}."
     elif question_starter == "Peux-tu":
         return f"Oui, bien sûr!, {response[1].lower()}{response[2:]}."
+    else:
+        return f"{response}"
 
 # Fonction : faire une liste contenant le contenu des fichier textes
 # Fonctionnement : parcourir les fichiers, les lire et stocker leur contenu dans une liste

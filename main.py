@@ -38,7 +38,11 @@ if __name__ == '__main__':
     | |____| | | | |  __/ | | |__| | |      | |   
     |______|_| |_|  \___|_|  \_____|_|      |_| v1.2     
         """)
-    print("-----Bonjour et bienvenue sur EfreiGPT !-----")
+    print("=======================================================\n",
+          "Développeurs  :  Gabriel PRIEUR, Adrien RIVET\n",
+          "Version       :  v1.2\n",
+          "Dernière maj  :  18/12/2023",)
+    print("=======================================================\n")
     time.sleep(0.5)
 
     # Afficher le message d'introduction
@@ -51,45 +55,52 @@ if __name__ == '__main__':
             time.sleep(0.1)   # Faire une animation d'affichage
     print()
     time.sleep(0.5)
-    print("1- Accéder au mode Chatbot pour poser une question")
+    print("[1] Accéder au mode Chatbot pour poser une question")
     time.sleep(0.5)
-    print("2- Accéder à des fonctionnalités pré-rédigées")
+    print("[2] Accéder à des fonctionnalités pré-rédigées")
     time.sleep(0.5)
-    print("---------------------------------------------")
+    print("-------------------------------------------------------")
     number = int(input("Tapez le numéro de la fonctionnalité choisie : "))
     while number <= 0 or number > 2:
         number = int(input("Numéro invalide. Tapez 1 ou 2 : "))
 
     # Si l'utilisateur tape 1, passer en mode ChatBot
     if number == 1:
+        while True:
+            question = input("Posez votre question : ")
 
-        question = input("Posez votre question : ")
+            if question == "STOP":
+                break
 
-        # Tokenisation de la question
-        question_words = tokenize_question(question)
-        # Intersection des tokens de la question avec ceux du corpus
-        common_terms = intersection_terms(question_words, "cleaned")
-        # Calcul du vecteur TF-IDF de la question
-        idf_scores = idf_calculation("cleaned")
-        question_vector = tfidf_vector(question_words, idf_scores)
-        # Calcul du document le plus pertinent
-        most_relevant_doc = most_relevant_document(question_vector, tfidf_matrix_result, file_names)
-        # Récupération du mot avec le score TF-IDF le plus élevé dans la question
-        highest_tfidf_word = max(question_vector, key=question_vector.get)
-        # Génération de la réponse
-        response = generate_response(most_relevant_doc, highest_tfidf_word)
-        # Affinage de la réponse
-        question_words_list = question.split(" ")
-        question_starter = question_words_list[0]
+            # Tokenisation de la question
+            question_words = tokenize_question(question)
+            # Intersection des tokens de la question avec ceux du corpus
+            common_terms = intersection_terms(question_words, "cleaned")
+            # Calcul du vecteur TF-IDF de la question
+            idf_scores = idf_calculation("cleaned")
+            question_vector = tfidf_vector(question_words, idf_scores)
+            # Calcul du document le plus pertinent
+            most_relevant_doc = most_relevant_document(question_vector, tfidf_matrix_result, file_names)
+            # Récupération du mot avec le score TF-IDF le plus élevé dans la question
+            highest_tfidf_word = max(question_vector, key=question_vector.get)
+            # Génération de la réponse
+            response = generate_response(most_relevant_doc, highest_tfidf_word)
+            # Affinage de la réponse
+            question_words_list = question.split(" ")
+            question_starter = question_words_list[0]
 
-        # Afficher la réponse
-        answer = refine_response(question_starter, response)
-        for letter in answer:
-            print(letter, end="")
-            cpt += 1
-            if cpt % 4 == 0:
-                time.sleep(0.1)
-
+            # Afficher la réponse
+            answer = refine_response(question_starter, response)
+            if answer != None:
+                for letter in answer:
+                    print(letter, end="")
+                    cpt += 1
+                    if cpt % 4 == 0:
+                        time.sleep(0.1)
+            else:
+                print("La question ne semble pas avoir de réponse dans ma base de données")
+            print()
+            print("-------------------------------------------------------")
 
     # Si l'utilisateur tape 2, passer en mode questions pré-rédigées
     if number == 2:
@@ -110,15 +121,17 @@ if __name__ == '__main__':
                 time.sleep(0.1)
         print()
         for fonctionnality in fonctionality_list:
-            print(f"{question_cpt}- {fonctionnality}")   # Lister les fonctionnalités
+            print(f"[{question_cpt}] {fonctionnality}")   # Lister les fonctionnalités
             question_cpt += 1
             time.sleep(0.5)
 
         while True:
-            print("---------------------------------------------")
+            print("-------------------------------------------------------")
             number = int(input("Tapez le numéro de la question choisie : "))
-            while number <= 0 or number > 6:
+            while number <= 0 or number > 7:
                 number = int(input("Tapez le numéro choisi : "))
+            if number == 7:
+                break
 
             # Obtenir la matrice TF-IDF
             tfidf_matrix_result = tfidf_matrix("cleaned")
@@ -136,3 +149,6 @@ if __name__ == '__main__':
                 fonctionnalite5()
             elif number == 6:
                 fonctionnalite6(tfidf_matrix_result)
+
+print("\n=======================================================")
+print("Merci et à bientôt sur EfreiGPT !")
