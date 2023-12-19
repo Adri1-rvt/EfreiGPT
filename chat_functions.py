@@ -82,7 +82,7 @@ def tfidf_vector(words, idf_scores):
             tf_vector[word] = 0
     return tf_vector
 
-# Fonction : calculer les nomes des vecteurs
+# Fonction : calculer les normes des vecteurs
 # Fonctionnement : itérer à travers les valeurs du vecteur, élever chaque valeur au carré, les additionner, et prendre la racine carrée du résultat
 # Argument d'entrée : vecteur
 # Sortie : norme du vecteur
