@@ -1,9 +1,6 @@
 <h1 align="center">
   <br>
   <a><img src="images\\logo.png" alt="Markdownify" width="300"></a>
-  <br>
-  EfreiGPT
-  <br>
 </h1>
 
 <h4 align="center">Bienvenue sur EfreiGPT, le chatBot si bien programmé que son code ne vous Efrei pas !</h4>
