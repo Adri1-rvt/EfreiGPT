@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a><img src="images\\logo.png" alt="Markdownify" width="200"></a>
+  <a><img src="images\\logo.png" alt="Markdownify" width="300"></a>
   <br>
   EfreiGPT
   <br>
